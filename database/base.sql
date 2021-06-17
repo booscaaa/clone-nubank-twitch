@@ -34,7 +34,7 @@ CREATE TABLE usuario(
     data_criacao TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     id_grupo_usuario INTEGER NOT NULL,
 
-    CONSTRAINT id_grupo_usuario_fk FOREIGN KEY(id_grupo_usuario) REFERENCES grupo_usuario_permissao(id)
+    CONSTRAINT id_grupo_usuario_fk FOREIGN KEY(id_grupo_usuario) REFERENCES grupo_usuario(id)
 );
 
 CREATE TABLE auth(

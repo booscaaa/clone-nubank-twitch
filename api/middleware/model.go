@@ -1,4 +1,4 @@
-package sessao
+package middleware
 
 import (
 	"encoding/json"
@@ -51,12 +51,13 @@ func (u Usuario) isValidLogin() error {
 	return nil
 }
 
-func New(id int, login string, senha string, email string, idGrupoUsuario int) (*Usuario, error) {
+func NewUsuario(id int, login string, senha string, email string, dataCriacao string, idGrupoUsuario int) (*Usuario, error) {
 	usuario := Usuario{
 		ID:             id,
 		Login:          login,
 		Senha:          senha,
 		Email:          email,
+		DataCriacao:    dataCriacao,
 		IDGrupoUsuario: idGrupoUsuario,
 	}
 
