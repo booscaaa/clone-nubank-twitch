@@ -62,3 +62,9 @@ CREATE TABLE cartao_debito(
 
     CONSTRAINT id_usuario_fk FOREIGN KEY(id_usuario) REFERENCES usuario(id)
 );
+
+-- Alterações para criação da coluna id_usuario na tabela auth
+
+ALTER TABLE auth ADD COLUMN id_usuario integer;
+
+ALTER TABLE auth ADD CONSTRAINT id_usuario_fk FOREIGN KEY(id_usuario) REFERENCES usuario(id);

@@ -1,6 +1,9 @@
 package middleware
 
-import "net/http"
+import (
+	"fmt"
+	"net/http"
+)
 
 func VerifyAuth(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(response http.ResponseWriter, request *http.Request) {
@@ -8,11 +11,13 @@ func VerifyAuth(next http.Handler) http.Handler {
 			bearerToken := request.Header.Get("Authorization")
 
 			if isAuth, usuario := VerifyToken(bearerToken); isAuth {
-				request = SetContextData(request, usuario)
+				fmt.Println("aqui")
+				request = SetContextData(request, &usuario)
 				next.ServeHTTP(response, request)
 				return
 			} else {
 				response.WriteHeader(http.StatusUnauthorized)
+				return
 			}
 		}
 

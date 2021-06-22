@@ -75,7 +75,7 @@ func VerifyToken(bearerToken string) (bool, Usuario) {
 	return true, usuario
 }
 
-func SetContextData(r *http.Request, u Usuario) (ro *http.Request) {
+func SetContextData(r *http.Request, u *Usuario) (ro *http.Request) {
 	ctx := r.Context()
 	ctx = context.WithValue(ctx, 1, u)
 	ro = r.WithContext(ctx)
